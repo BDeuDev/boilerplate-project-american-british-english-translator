@@ -14,6 +14,10 @@ module.exports = function (app) {
         return res.json({ error: 'Required field(s) missing' });
       }
 
+      const validLocales = ['american-to-british', 'british-to-american'];
+      if (!validLocales.includes(locale)) {
+        return res.json({ error: 'Invalid value for locale field' });
+      }
       if (text === "") {
         return res.json({ error: 'No text to translate' });
       }
